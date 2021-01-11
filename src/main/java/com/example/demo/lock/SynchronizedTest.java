@@ -5,7 +5,7 @@ package com.example.demo.lock;
  * @create 2021/1/10 19:50
  */
 public class SynchronizedTest {
-    private int count = 10;
+    private  static int count = 10;
 
     public void m() {
         synchronized (this) {
@@ -14,10 +14,18 @@ public class SynchronizedTest {
         }
     }
 
-    //  m1 = m2
-    public synchronized  void m1() {
+    /**
+     *   m1 = m2
+     */
+    public synchronized static void m1() {
         count--;
         System.out.println(Thread.currentThread().getName() + ",count =" + count);
+    }
+
+    public static void m2(){
+        synchronized (SynchronizedTest.class){
+            count--;
+        }
     }
 
     public static void main(String[] args) {
