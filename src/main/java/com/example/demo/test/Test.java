@@ -1,8 +1,15 @@
 package com.example.demo.test;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.openjdk.jol.info.ClassLayout;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -25,6 +32,31 @@ public class Test {
         System.out.println(" m end");
     }
 
+    List<Integer> getList(){
+        System.out.println("list");
+        return Lists.newArrayList();
+    }
+
+    List<Integer> getList(int type,double f){
+        System.out.println("list");
+        return Lists.newArrayList();
+    }
+
+    void getList(int type){
+        System.out.println("void");
+    }
+
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    static class DataTest implements Serializable {
+        String id;
+        int type;
+        int client;
+        int status;
+    }
+
     public static void main(String[] args) {
         Test t = new Test();
         executorService.submit(t::m);
@@ -35,6 +67,13 @@ public class Test {
             e.printStackTrace();
         }
         t.running = false;
+        String id = "kkkk";
+        String s = "{\"client\":" + 1 + ",\"id\":" + "test" + ",\"status\":" + 1 + ",\"type\":" + 1 + "}";
+        System.out.println(JSON.toJSONString(new DataTest("ssss", 1, 1, 1)));
+        System.out.println(s);
+        String s1 = ClassLayout.parseInstance(new Object()).toPrintable();
+        System.out.println(s1);
+
     }
 
 }
