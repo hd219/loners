@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.openjdk.jol.info.ClassLayout;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -32,17 +33,17 @@ public class Test {
         System.out.println(" m end");
     }
 
-    List<Integer> getList(){
+    List<Integer> getList() {
         System.out.println("list");
         return Lists.newArrayList();
     }
 
-    List<Integer> getList(int type,double f){
+    List<Integer> getList(int type, double f) {
         System.out.println("list");
         return Lists.newArrayList();
     }
 
-    void getList(int type){
+    void getList(int type) {
         System.out.println("void");
     }
 
@@ -57,22 +58,37 @@ public class Test {
         int status;
     }
 
-    public static void main(String[] args) {
-        Test t = new Test();
-        executorService.submit(t::m);
-//        new Thread(t::m, "t1").start();
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    static int getCount(int receiveCount) {
+        int number = receiveCount < 100 ? (100 - receiveCount) % 100 : 100 - (receiveCount % 100);
+        if (number == 0) {
+            number = 100;
         }
-        t.running = false;
-        String id = "kkkk";
-        String s = "{\"client\":" + 1 + ",\"id\":" + "test" + ",\"status\":" + 1 + ",\"type\":" + 1 + "}";
-        System.out.println(JSON.toJSONString(new DataTest("ssss", 1, 1, 1)));
-        System.out.println(s);
-        String s1 = ClassLayout.parseInstance(new Object()).toPrintable();
-        System.out.println(s1);
+        return number;
+    }
+
+    public static void main(String[] args) {
+//        Test t = new Test();
+//        executorService.submit(t::m);
+////        new Thread(t::m, "t1").start();
+//        try {
+//            TimeUnit.SECONDS.sleep(1);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        t.running = false;
+//        String id = "kkkk";
+//        String s = "{\"client\":" + 1 + ",\"id\":" + "test" + ",\"status\":" + 1 + ",\"type\":" + 1 + "}";
+//        System.out.println(JSON.toJSONString(new DataTest("ssss", 1, 1, 1)));
+//        System.out.println(s);
+//        String s1 = ClassLayout.parseInstance(new Object()).toPrintable();
+//        System.out.println(s1);
+//        System.out.println((100 - 20) % 100);
+//        System.out.println((320 - 20) % 100);
+//        System.out.println(321 % 100);
+        int count = getCount(400);
+        System.out.println(count);
+
+        System.out.println(new Date(0));
 
     }
 
