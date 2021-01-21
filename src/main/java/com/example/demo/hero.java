@@ -10,7 +10,7 @@ public class hero {
 
     int skillname(String name) {
         System.out.println("这个技能的名字是" + name);
-        return 0;
+        return 1;
     }
 
     public int getAtc() {
