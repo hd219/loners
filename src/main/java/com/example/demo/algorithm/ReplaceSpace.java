@@ -1,8 +1,6 @@
 package com.example.demo.algorithm;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.HashMap;
 
@@ -11,8 +9,6 @@ import java.util.HashMap;
  */
 public class ReplaceSpace {
 
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     private static HashMap<Integer, Long> temp = new HashMap<>();
 

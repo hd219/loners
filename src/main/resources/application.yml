@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    name: test
+    url: jdbc:mysql://192.168.33.6:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 50
+      max-total: 50
+      max-wait-millis: 500
+mybatis:
+  type-aliases-package: com.example.demo.practice.model.pojo
+  mapper-locations: classpath:mybatis/generator/*.xml
+  config-location: classpath:mybatis/mybatis.cfg.xml
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+logging:
+  com.blog.springboot: WARN
